@@ -155,6 +155,7 @@ public class Solution {
             wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
             word = null;
         }
+        words = null;
         line = null;
     }
 
