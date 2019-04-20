@@ -1,5 +1,4 @@
-import implementation.Controller;
-import implementation.Solution;
+import implementation.multithreading.Controller;
 
 
 import java.io.FileNotFoundException;

@@ -1,7 +1,8 @@
-package implementation;
+package implementation.multithreading;
+
+import implementation.Solution;
 
 import java.util.concurrent.BlockingQueue;
-import static implementation.Constants.producerFinished;
 
 public class Consumer implements Runnable {
 

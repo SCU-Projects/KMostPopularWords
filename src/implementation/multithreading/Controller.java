@@ -1,12 +1,12 @@
-package implementation;
+package implementation.multithreading;
 
-import java.nio.file.Paths;
+import implementation.Solution;
+
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import static implementation.Constants.*;
