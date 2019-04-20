@@ -3,6 +3,7 @@ package implementation.multithreading;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
+import java.util.StringTokenizer;
 import java.nio.channels.FileChannel;
 import java.util.concurrent.BlockingQueue;
 
@@ -51,12 +52,18 @@ public class Producer implements Runnable {
             while(inChannel.read(buffer) > 0){
                 buffer.flip();
                 content =  new String(buffer.array(),"UTF-8");
-                //System.out.println(Thread.currentThread().getName()+" producing line: "+ LocalDateTime.now().toLocalTime());
-                for(String line : content.split("\n|\r"))
-                    if(line.length() > 0){
-                        queue.put(new String(line));
-                        line = null;
+
+                //System.out.println(Thread.currentThread().getName()+" producing line: "+ LocalDateTime.now().toLocalTime())
+                StringTokenizer line = new StringTokenizer(content, "\n");
+
+                while (line.hasMoreTokens()) {
+                  String lineString = line.nextToken();
+                  if(lineString.length() > 0){
+                        queue.put(new String(lineString));
                     }
+                   lineString = null;
+                }
+                line = null;
                 content = null;
                 buffer.clear(); // do something with the data and clear/compact it.
             }
