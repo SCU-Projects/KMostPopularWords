@@ -47,13 +47,17 @@ public class Producer implements Runnable {
             RandomAccessFile aFile = new RandomAccessFile(fileName,"r");
             FileChannel inChannel = aFile.getChannel();
             ByteBuffer buffer = ByteBuffer.allocate(BUFFER_CAPACITY);
+            String content;
             while(inChannel.read(buffer) > 0){
                 buffer.flip();
-                String content =  new String(buffer.array(),"UTF-8");
+                content =  new String(buffer.array(),"UTF-8");
                 //System.out.println(Thread.currentThread().getName()+" producing line: "+ LocalDateTime.now().toLocalTime());
                 for(String line : content.split("\n|\r"))
-                    if(line.length() > 0)
-                        queue.put(line);
+                    if(line.length() > 0){
+                        queue.put(new String(line));
+                        line = null;
+                    }
+                content = null;
                 buffer.clear(); // do something with the data and clear/compact it.
             }
             inChannel.close();
