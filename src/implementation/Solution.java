@@ -19,7 +19,7 @@ public class Solution {
     public static List<String> getKMostFrequentWords(String filename){
         int k = 100;
         List<String> result = new ArrayList<>();
-        //result = nioGetFrequentWords(k, filename);
+        //result = nioGetAllFrequentWords(k, filename);
         brGetFrequentWords(k, filename);
         //result = nioBufferedGetFrequentWords(k, filename);
         return getResult(k);
@@ -106,7 +106,7 @@ public class Solution {
         return getKFrequentWords(k);
     }
 
-    private static List<String> nioGetFrequentWords(int k, String fileName){
+    private static List<String> nioGetAllFrequentWords(int k, String fileName){
 
         File file = new File(fileName);
         byte [] fileBytes = new byte[0];
@@ -153,11 +153,14 @@ public class Solution {
         words = line.split(" ");
         for(String word : words){
             wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+            word = null;
         }
+        line = null;
     }
 
     public static synchronized void processLine(String lineContent){
         callWorkerThreadsToProcessLine(lineContent);
+        lineContent = null;
     }
 
     private static List<String> getKFrequentWords(int k){

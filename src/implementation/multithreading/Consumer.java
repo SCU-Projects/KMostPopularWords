@@ -24,10 +24,10 @@ public class Consumer implements Runnable {
               //  return;
 
             if(line != null){
-                Solution.processLine(line);
+                Solution.processLine(new String(line));
                 //System.out.println(Thread.currentThread().getName()+" processing line: "+line);
             }
-
+            line = null;
         }
     }
 }
