@@ -4,6 +4,7 @@ import implementation.Solution;
 
 import java.util.concurrent.BlockingQueue;
 
+//Main execution of the Consumer thread block
 public class Consumer implements Runnable {
 
     private final BlockingQueue<String> queue;
