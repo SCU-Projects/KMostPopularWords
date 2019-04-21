@@ -1,6 +1,7 @@
 package implementation.multithreading;
 
 import implementation.Solution;
+import implementation.Solution.WordCount;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -47,9 +48,9 @@ public class Controller {
             }
         }
         System.out.println("Controller finished");
-        List<String> result = Solution.getResult(k);
-        for(String word : result)
-            System.out.println(word);
+        List<WordCount> result = Solution.getResult(k);
+        for(WordCount word : result)
+            System.out.println(word.getWord() + "->" + word.getCount());
         System.out.println("Task finished at"+LocalDateTime.now());
 
     }

@@ -1,10 +1,14 @@
+import implementation.Solution;
+import implementation.Solution.WordCount;
 import implementation.multithreading.Controller;
 
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import static implementation.Constants.logFileName;
+import java.util.List;
+
+import static implementation.Constants.*;
 
 public class Main {
 
@@ -17,6 +21,10 @@ public class Main {
             e.printStackTrace();
         }
         System.setOut(new PrintStream(f));
-        Controller.start();
+        Controller.start(); //to enable multi-threading
+//        List<WordCount> result  = Solution.getKMostFrequentWords(fileName);
+//        
+//        for(WordCount word : result)
+//        	System.out.println(word.getWord() +"->" + word.getCount());
     }
 }
