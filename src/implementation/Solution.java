@@ -2,7 +2,6 @@ package implementation;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.time.LocalDateTime;
@@ -11,59 +10,46 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static implementation.Constants.*;
 
+//This class handles the disk-reads by the producer thread and the word count processing by the consumer threads
 public class Solution {
 	private static ConcurrentHashMap<String, Integer> wordCountMap = new ConcurrentHashMap<>();
 	private static PriorityQueue<WordCount> minHeapPQ = new PriorityQueue<>(k, new WordCountComparator());
 	static String[] words;
 
 	public static List<WordCount> getKMostFrequentWords(String filename) {
+	    //Entry point to handle Single threaded disk reading and data processing
 		int k = 100;
-		List<WordCount> result = new ArrayList<>();
-		// result = nioGetAllFrequentWords(k, filename);
-		// brGetFrequentWords(k, filename);
-		return nioBufferedGetFrequentWords(k, filename);
-		//brReshmaGetFrequentWords(k, filename);
-		//return getResult(k);
+		 //brGetFrequentWords(k, filename);
+		 bufferedReaderGetFrequentWords(k, filename);
+		 return getResult(k);
 	}
 
-	private static void multithreadedWorkers() {
-		int cores = Runtime.getRuntime().availableProcessors();
-		System.out.println(cores);
-	}
-
-	private static void brReshmaGetFrequentWords(int k, String fileName) {
+	private static void bufferedReaderGetFrequentWords(int k, String fileName) {
+	    //Reads data from the disk using BufferedReader for each line and updates the word count in the HashMap
 		BufferedReader br = null;
-
 		try {
-
 			br = new BufferedReader(new FileReader(fileName));
-
 			// Reading the first line into currentLine
-
 			String currentLine = br.readLine();
+
 			while (currentLine != null) {
-				// splitting the currentLine into words
 
-				String[] words = currentLine.split(" ");
+                // splitting the currentLine into word
+                String[] words = currentLine.split(" ");
 
-				for (String word : words) {
-					// if word is already present in wordCountMap, then update its count
-
-					if (wordCountMap.containsKey(word)) {
-						wordCountMap.put(word, wordCountMap.get(word) + 1);
-					}
-
-					// else insert the word as key and 1 as value
-					else {
-						wordCountMap.put(word, 1);
-					}
-				}
-
-				// Reading next line into currentLine
-
-				currentLine = br.readLine();
-			}
-			
+                for (String word : words) {
+                    // if word is already present in wordCountMap, then update its count
+                    if (wordCountMap.containsKey(word)) {
+                        wordCountMap.put(word, wordCountMap.get(word) + 1);
+                    }
+                    // else insert the word as key and 1 as value
+                    else {
+                        wordCountMap.put(word, 1);
+                    }
+                }
+                // Reading next line into currentLine
+                currentLine = br.readLine();
+            }
 		}
 	 catch (IOException e) {
 		e.printStackTrace();
@@ -80,12 +66,11 @@ public class Solution {
 	}
 
 	private static void brGetFrequentWords(int k, String fileName) {
-		List<String> result = new ArrayList<>();
-		BufferedReader br = null;
+        //Reads data from the disk using BufferedReader for each line and updates the word count in the HashMap
+        BufferedReader br = null;
 		String line;
 		try {
-
-			br = new BufferedReader(new FileReader(fileName), 8000);
+			br = new BufferedReader(new FileReader(fileName));
 			while ((line = br.readLine()) != null) {
 				processLine(line);
 			}
@@ -102,12 +87,12 @@ public class Solution {
 	}
 
 	public static List<WordCount> getResult(int k) {
+	    //Iterates across all keys and its count in a priority queue and retrieves the most frequent occurrence of k elements
 		return getKFrequentWords(k);
 	}
 
 	private static List<WordCount> nioBufferedGetFrequentWords(int k, String fileName) {
-		// fixed size buffer 1024 -> 36 seconds, 2048 -> 39 seconds
-		// i/o: 1024 -> 1037141, 2048 -> 518571, 20048 -> 52975 35s, 2000048 ->
+	    //Java NEW INPUT OUTPUT(NIO) to read data from disk
 		Integer count = 0;
 		try {
 			RandomAccessFile aFile = new RandomAccessFile(fileName, "r");
@@ -118,7 +103,7 @@ public class Solution {
 				buffer.flip();
 				String content = new String(buffer.array(), "UTF-8");
 				processLine(content);
-				buffer.clear(); // do something with the data and clear/compact it.
+				buffer.clear();
 				count++;
 				// System.out.println("E:" + LocalDateTime.now());
 			}
@@ -134,7 +119,9 @@ public class Solution {
 
 
 	private static List<WordCount> nioGetAllFrequentWords(int k, String fileName) {
-
+	    //Stores the entire file from disk to RAM
+        //fails for size > RAM of the system
+        //Hence not suitable for larger file size
 		File file = new File(fileName);
 		byte[] fileBytes = new byte[0];
 		try {
@@ -148,33 +135,10 @@ public class Solution {
 		return getKFrequentWords(k);
 	}
 
-	public static void produceLinesToQueue() {
-		try {
-			RandomAccessFile aFile = new RandomAccessFile(fileName, "r");
-			FileChannel inChannel = aFile.getChannel();
-			ByteBuffer buffer = ByteBuffer.allocate(BUFFER_CAPACITY);
-			while (inChannel.read(buffer) > 0) {
-				buffer.flip();
-				String content = new String(buffer.array(), "UTF-8");
-				// System.out.println(Thread.currentThread().getName()+" producing line: "+
-				// LocalDateTime.now().toLocalTime());
-				for (String line : content.split("\n|\r"))
-					if (line.length() > 0)
-						queue.put(line);
-				buffer.clear(); // do something with the data and clear/compact it.
-			}
-			inChannel.close();
-			aFile.close();
-		} catch (IOException exc) {
-			System.out.println(exc);
-			System.exit(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 
-	private static void callWorkerThreadsToProcessLine(String line) {
-		words = line.split(" ");
+	private static synchronized void callWorkerThreadsToProcessLine(String line) {
+        //Synchronized block for Consumer threads to process words in each line from the queue
+        words = line.split(" ");
 		for (String word : words) {
 			Integer count = wordCountMap.getOrDefault(word, 0);
 			wordCountMap.put(word, count + 1);
@@ -186,12 +150,14 @@ public class Solution {
 	}
 
 	public static synchronized void processLine(String lineContent) {
-		callWorkerThreadsToProcessLine(lineContent);
+	    //Synchronized block for Consumer threads to process words in each line from the queue
+	    callWorkerThreadsToProcessLine(lineContent);
 		lineContent = null;
 	}
 
 	private static List<WordCount> getKFrequentWords(int k) {
-		System.out.println("Starting the k:" + LocalDateTime.now().toLocalTime());
+        //Iterates across all keys and its count in a priority queue and retrieves the most frequent occurrence of k elements
+        System.out.println("Starting the k:" + LocalDateTime.now().toLocalTime());
 		for (Map.Entry<String, Integer> keyValue : wordCountMap.entrySet()) {
 			if (minHeapPQ.size() >= k) {
 				if (minHeapPQ.peek().getCount() < keyValue.getValue()) {
