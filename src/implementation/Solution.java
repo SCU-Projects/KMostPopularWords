@@ -186,8 +186,8 @@ public class Solution {
         System.out.println("Word\t\t\tFrequency");
         List<WordCount> result = Solution.getResult(k);
         String format = "%-20s%s";
-        for(WordCount word : result)
-            System.out.println(String.format(format, word.getWord(), word.getCount()));
+        for(int i = 0; i < result.size(); i++)
+            System.out.println(String.format(format, result.get(i).getWord(), result.get(i).getCount()));
     }
 
 	public static class WordCount {
