@@ -33,7 +33,7 @@ public class Controller {
         createAndStartProducers();
         createAndStartConsumers();
         //System.out.println("Ending P & C:"+LocalDateTime.now().toLocalTime());
-        for(Thread t: allThreadCollection){
+        for (Thread t : allThreadCollection) {
             try {
                 t.join();
             } catch (InterruptedException e) {
@@ -45,30 +45,30 @@ public class Controller {
 
     }
 
-    private static void createAndStartProducers(){
+    private static void createAndStartProducers() {
         //Driver to start the producer thread
-        for(int i = 1; i <= NUMBER_OF_PRODUCERS; i++){
+        for (int i = 1; i <= NUMBER_OF_PRODUCERS; i++) {
             Producer producer = new Producer(queue);
-            Thread producerThread = new Thread(producer,"producer-"+i);
+            Thread producerThread = new Thread(producer, "producer-" + i);
             producerThreadCollection.add(producerThread);
             producerThread.start();
         }
         allThreadCollection.addAll(producerThreadCollection);
     }
 
-    private static void createAndStartConsumers(){
+    private static void createAndStartConsumers() {
         //Driver to start the consumer thread
-        for(int i = 0; i < NUMBER_OF_CONSUMERS; i++){
-            Thread consumerThread = new Thread(new Consumer(queue), "consumer-"+i);
+        for (int i = 0; i < NUMBER_OF_CONSUMERS; i++) {
+            Thread consumerThread = new Thread(new Consumer(queue), "consumer-" + i);
             allThreadCollection.add(consumerThread);
             consumerThread.start();
         }
     }
 
-    public static boolean isProducerAlive(){
+    public static boolean isProducerAlive() {
         //returns if the producer finished processing reads from the disk.
-        for(Thread t: producerThreadCollection){
-            if(t.isAlive())
+        for (Thread t : producerThreadCollection) {
+            if (t.isAlive())
                 return true;
         }
         return false;

@@ -15,16 +15,16 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        while(true){
+        while (true) {
             String line = queue.poll();
 
-            if(line == null && !Controller.isProducerAlive())
+            if (line == null && !Controller.isProducerAlive())
                 return;
 
             //if(line == null && producerFinished)
-              //  return;
+            //  return;
 
-            if(line != null){
+            if (line != null) {
                 Solution.processLine(new String(line));
                 //System.out.println(Thread.currentThread().getName()+" processing line: "+line);
             }

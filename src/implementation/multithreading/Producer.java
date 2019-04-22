@@ -29,7 +29,7 @@ public class Producer implements Runnable {
         //callNIO();
     }
 
-    private void callBR(){
+    private void callBR() {
         //BUFFERED READER
         List<String> result = new ArrayList<>();
         BufferedReader br = null;
@@ -55,27 +55,26 @@ public class Producer implements Runnable {
         }
     }
 
-    private void callNIO(){
+    private void callNIO() {
         // NIO
-        try
-        {
-            RandomAccessFile aFile = new RandomAccessFile(fileName,"r");
+        try {
+            RandomAccessFile aFile = new RandomAccessFile(fileName, "r");
             FileChannel inChannel = aFile.getChannel();
             ByteBuffer buffer = ByteBuffer.allocate(BUFFER_CAPACITY);
             String content;
-            while(inChannel.read(buffer) > 0){
+            while (inChannel.read(buffer) > 0) {
                 buffer.flip();
-                content =  new String(buffer.array(),"UTF-8");
+                content = new String(buffer.array(), "UTF-8");
                 //System.out.println(Thread.currentThread().getName()+" producing line: "+ LocalDateTime.now().toLocalTime())
                 StringTokenizer line = new StringTokenizer(content, "\n");
                 String lineString;
                 //Reads data from disk matching the given Buffer size and then puts each line into the queue to be processed by the consumers
                 while (line.hasMoreTokens()) {
-                   lineString = new String(line.nextToken());
-                  if(lineString.length() > 0){
+                    lineString = new String(line.nextToken());
+                    if (lineString.length() > 0) {
                         queue.put(new String(lineString));
                     }
-                   lineString = null;
+                    lineString = null;
                 }
                 line = null;
                 content = null;
@@ -83,9 +82,7 @@ public class Producer implements Runnable {
             }
             inChannel.close();
             aFile.close();
-        }
-        catch (IOException exc)
-        {
+        } catch (IOException exc) {
             System.out.println(exc);
             System.exit(1);
         } catch (InterruptedException e) {
