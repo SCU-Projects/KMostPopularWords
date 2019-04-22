@@ -113,7 +113,7 @@ public class Solution {
 			System.out.println(exc);
 			System.exit(1);
 		}
-		System.out.println("I/O:" + count);
+		//System.out.println("I/O:" + count);
 		return getKFrequentWords(k);
 	}
 
@@ -157,7 +157,7 @@ public class Solution {
 
 	private static List<WordCount> getKFrequentWords(int k) {
         //Iterates across all keys and its count in a priority queue and retrieves the most frequent occurrence of k elements
-        System.out.println("Starting the k:" + LocalDateTime.now().toLocalTime());
+        //System.out.println("Starting the k:" + LocalDateTime.now().toLocalTime());
 		for (Map.Entry<String, Integer> keyValue : wordCountMap.entrySet()) {
 			if (minHeapPQ.size() >= k) {
 				if (minHeapPQ.peek().getCount() < keyValue.getValue()) {

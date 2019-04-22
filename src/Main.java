@@ -21,19 +21,13 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.setOut(new PrintStream(f));
+        //System.setOut(new PrintStream(f));
 
         Scanner myObj = new Scanner(System.in);
         System.out.println("Enter the file size to process:");
         fileSize = myObj.nextInt();
-        System.out.println("Starting multi-threader buffered-reader for processing "+ fileSize + " GB file");
+        //System.out.println("Starting multi-threader buffered-reader for processing "+ fileSize + " GB file");
         Controller.start();                         //to run in a multi threaded consumer mode
         //startSingleThreadedBufferedReader();      //to run in a single threaded mode
-    }
-
-    static void startSingleThreadedBufferedReader(){
-        List<WordCount> result  = Solution.getKMostFrequentWords(fileName);
-        for(WordCount word : result)
-        	System.out.println(word.getWord() +"->" + word.getCount());
     }
 }

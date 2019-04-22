@@ -19,11 +19,11 @@ public class Controller {
     public static void start() {
         //entry point for multi-threaded producer consumer design
         LocalDateTime start = LocalDateTime.now();
-        System.out.println("Starting:"+ start.toLocalTime());
+        //System.out.println("Starting:"+ start.toLocalTime());
         startDriverThreads();
         LocalDateTime end = LocalDateTime.now();
-        System.out.println("Ending:"+ end.toLocalTime());
-        System.out.println("Took:"+ ChronoUnit.SECONDS.between(start, end));
+        //System.out.println("Ending:"+ end.toLocalTime());
+        System.out.println("Total execution time is:"+ ChronoUnit.SECONDS.between(start, end) + " seconds");
     }
 
     private static void startDriverThreads() {
@@ -31,10 +31,10 @@ public class Controller {
         producerThreadCollection = new ArrayList<Thread>();
         allThreadCollection = new ArrayList<Thread>();
         queue = new LinkedBlockingDeque<String>();
-        System.out.println("Starting P & C:"+LocalDateTime.now().toLocalTime());
+        //System.out.println("Starting P & C:"+LocalDateTime.now().toLocalTime());
         createAndStartProducers();
         createAndStartConsumers();
-        System.out.println("Ending P & C:"+LocalDateTime.now().toLocalTime());
+        //System.out.println("Ending P & C:"+LocalDateTime.now().toLocalTime());
         for(Thread t: allThreadCollection){
             try {
                 t.join();
@@ -42,11 +42,13 @@ public class Controller {
                 e.printStackTrace();
             }
         }
-        System.out.println("Controller finished");
+        System.out.println("The top 100 elements are ");
+        System.out.println("Word\t\t\tFrequency");
         List<WordCount> result = Solution.getResult(k);
+        String format = "%-20s%s";
         for(WordCount word : result)
-            System.out.println(word.getWord() + "->" + word.getCount());
-        System.out.println("Task finished at"+LocalDateTime.now());
+            System.out.println(String.format(format, word.getWord(), word.getCount()));
+        //System.out.println("Task finished at"+LocalDateTime.now());
 
     }
 
