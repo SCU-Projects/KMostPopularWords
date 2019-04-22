@@ -3,6 +3,7 @@ package implementation.multithreading;
 import implementation.Solution;
 import implementation.Solution.WordCount;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -18,12 +19,10 @@ public class Controller {
 
     public static void start() {
         //entry point for multi-threaded producer consumer design
-        LocalDateTime start = LocalDateTime.now();
+         start = LocalDateTime.now();
         //System.out.println("Starting:"+ start.toLocalTime());
         startDriverThreads();
-        LocalDateTime end = LocalDateTime.now();
         //System.out.println("Ending:"+ end.toLocalTime());
-        System.out.println("Total execution time is:"+ ChronoUnit.SECONDS.between(start, end) + " seconds");
     }
 
     private static void startDriverThreads() {
@@ -42,6 +41,8 @@ public class Controller {
                 e.printStackTrace();
             }
         }
+        end = LocalDateTime.now();
+        System.out.println("Total execution time is "+ ChronoUnit.SECONDS.between(start, end) + " seconds");
         System.out.println("The top 100 elements are ");
         System.out.println("Word\t\t\tFrequency");
         List<WordCount> result = Solution.getResult(k);
