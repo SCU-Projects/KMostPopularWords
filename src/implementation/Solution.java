@@ -5,6 +5,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,8 +18,7 @@ public class Solution {
 	static String[] words;
 
 	public static List<WordCount> getKMostFrequentWords(String filename) {
-	    //Entry point to handle Single threaded disk reading and data processing
-		int k = 100;
+	     //Entry point to handle Single threaded disk reading and data processing
 		 //brGetFrequentWords(k, filename);
 		 bufferedReaderGetFrequentWords(k, filename);
 		 return getResult(k);
@@ -177,6 +177,18 @@ public class Solution {
 
 		return kFreqWords;
 	}
+
+	public static void printOutput(){
+		//Gets the output and prints it to the console
+	    end = LocalDateTime.now();
+        System.out.println("Total execution time is "+ ChronoUnit.SECONDS.between(start, end) + " seconds");
+        System.out.println("The top 100 elements are ");
+        System.out.println("Word\t\t\tFrequency");
+        List<WordCount> result = Solution.getResult(k);
+        String format = "%-20s%s";
+        for(WordCount word : result)
+            System.out.println(String.format(format, word.getWord(), word.getCount()));
+    }
 
 	public static class WordCount {
 		String word;

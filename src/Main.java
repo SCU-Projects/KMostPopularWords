@@ -6,6 +6,7 @@ import implementation.multithreading.Controller;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,7 +28,14 @@ public class Main {
         System.out.println("Enter the file size to process:");
         fileSize = myObj.nextInt();
         //System.out.println("Starting multi-threader buffered-reader for processing "+ fileSize + " GB file");
+        start = LocalDateTime.now();
         Controller.start();                         //to run in a multi threaded consumer mode
         //startSingleThreadedBufferedReader();      //to run in a single threaded mode
+    }
+
+    static void startSingleThreadedBufferedReader(){
+        //to run in a single threaded mode
+        Solution.getKMostFrequentWords(fileName);
+        Solution.printOutput();
     }
 }

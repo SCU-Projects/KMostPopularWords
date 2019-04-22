@@ -19,7 +19,6 @@ public class Controller {
 
     public static void start() {
         //entry point for multi-threaded producer consumer design
-         start = LocalDateTime.now();
         //System.out.println("Starting:"+ start.toLocalTime());
         startDriverThreads();
         //System.out.println("Ending:"+ end.toLocalTime());
@@ -41,14 +40,7 @@ public class Controller {
                 e.printStackTrace();
             }
         }
-        end = LocalDateTime.now();
-        System.out.println("Total execution time is "+ ChronoUnit.SECONDS.between(start, end) + " seconds");
-        System.out.println("The top 100 elements are ");
-        System.out.println("Word\t\t\tFrequency");
-        List<WordCount> result = Solution.getResult(k);
-        String format = "%-20s%s";
-        for(WordCount word : result)
-            System.out.println(String.format(format, word.getWord(), word.getCount()));
+        Solution.printOutput();
         //System.out.println("Task finished at"+LocalDateTime.now());
 
     }
