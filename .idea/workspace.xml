@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e94868c2-0cc2-4e68-bd96-3d5dabe365ae" name="Default Changelist" comment="With code clean-up and output formatted">
+    <list default="true" id="e94868c2-0cc2-4e68-bd96-3d5dabe365ae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KMostPopularWords/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KMostPopularWords/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/Solution$WordCount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/Solution$WordCount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/WordCountComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/WordCountComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/multithreading/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KMostPopularWords/implementation/multithreading/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/implementation/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/WordCountComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/WordCountComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/multithreading/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/multithreading/Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/multithreading/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/multithreading/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/multithreading/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/multithreading/Producer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,15 +64,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="class" value="3" />
-          <entry key="java" value="3049" />
-          <entry key="txt" value="59" />
+          <entry key="java" value="3113" />
+          <entry key="txt" value="76" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="3" />
-          <entry key="JAVA" value="3049" />
-          <entry key="PLAIN_TEXT" value="59" />
+          <entry key="JAVA" value="3113" />
+          <entry key="PLAIN_TEXT" value="76" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -107,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+            <state relative-caret-position="200">
+              <caret line="30" column="15" selection-start-line="30" selection-end-line="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,10 +143,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/implementation/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+            <state relative-caret-position="340">
+              <caret line="20" column="37" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#963#964#0" expanded="true" />
+                <element signature="e#1022#1023#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -218,8 +209,8 @@
         <option value="$PROJECT_DIR$/src/implementation/multithreading/Consumer.java" />
         <option value="$PROJECT_DIR$/src/implementation/multithreading/Controller.java" />
         <option value="$PROJECT_DIR$/src/implementation/multithreading/Producer.java" />
-        <option value="$PROJECT_DIR$/src/implementation/Constants.java" />
         <option value="$PROJECT_DIR$/src/implementation/WordCountComparator.java" />
+        <option value="$PROJECT_DIR$/src/implementation/Constants.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
@@ -296,7 +287,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555904563272" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555905993736" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -384,14 +375,21 @@
       <option name="project" value="LOCAL" />
       <updated>1555903683662</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="With auto-aligned code">
+      <created>1555904645779</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1555904645779</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22441365" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22441365" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -400,7 +398,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.39653304" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39653304" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5417118" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -461,7 +459,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="With code clean-up and comments added" />
     <MESSAGE value="With code clean-up and output formatted" />
-    <option name="LAST_COMMIT_MESSAGE" value="With code clean-up and output formatted" />
+    <MESSAGE value="With auto-aligned code" />
+    <option name="LAST_COMMIT_MESSAGE" value="With auto-aligned code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -615,16 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/implementation/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/implementation/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -647,10 +636,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/implementation/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#1022#1023#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        <state relative-caret-position="200">
+          <caret line="30" column="15" selection-start-line="30" selection-end-line="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

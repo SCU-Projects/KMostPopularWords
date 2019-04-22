@@ -17,4 +17,9 @@ public class Constants {
     public static final int NUMBER_OF_PRODUCERS = 1;
     public static final int NUMBER_OF_CONSUMERS = Runtime.getRuntime().availableProcessors() - NUMBER_OF_PRODUCERS;
     public static BlockingQueue<String> queue;
+
+    public static void updateFileSize(){
+        inputFile = "\\data_" + fileSize + "GB.txt";
+        logFileName = basePath + "/log_" + String.valueOf(BUFFER_CAPACITY) + "_" + inputFile.substring(1);
+    }
 }
