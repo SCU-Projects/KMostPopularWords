@@ -1,3 +1,4 @@
+import implementation.Constants;
 import implementation.Solution;
 import implementation.Solution.WordCount;
 import implementation.multithreading.Controller;
@@ -27,6 +28,7 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Enter the file size to process:");
         fileSize = myObj.nextInt();
+        Constants.updateFileSize();
         //System.out.println("Starting multi-threader buffered-reader for processing "+ fileSize + " GB file");
         start = LocalDateTime.now();
         //Controller.start();                         //to run in a multi threaded consumer mode
