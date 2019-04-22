@@ -20,6 +20,7 @@ public class Constants {
 
     public static void updateFileSize(){
         inputFile = "\\data_" + fileSize + "GB.txt";
+        fileName = basePath + inputFile;
         logFileName = basePath + "/log_" + String.valueOf(BUFFER_CAPACITY) + "_" + inputFile.substring(1);
     }
 }
