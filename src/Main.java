@@ -29,11 +29,11 @@ public class Main {
         fileSize = myObj.nextInt();
         //System.out.println("Starting multi-threader buffered-reader for processing "+ fileSize + " GB file");
         start = LocalDateTime.now();
-        Controller.start();                         //to run in a multi threaded consumer mode
-        //startSingleThreadedBufferedReader();      //to run in a single threaded mode
+        //Controller.start();                         //to run in a multi threaded consumer mode
+        startSingleThreadedBufferedReader();      //to run in a single threaded mode
     }
 
-    static void startSingleThreadedBufferedReader(){
+    static void startSingleThreadedBufferedReader() {
         //to run in a single threaded mode
         Solution.getKMostFrequentWords(fileName);
         Solution.printOutput();
